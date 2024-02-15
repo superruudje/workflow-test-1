@@ -19,9 +19,10 @@ jobs:
           repository: 'superruudje/workflow-test-2'
 
       - name: Copy files
-        working-directory: 'data'
+        working-directory: ./
       - run: rm dest/data
-      - run: cp data.json dest/data/
+      - run: cp data/data.json dest/data/
+      - run: cp -r thumbnails dest/thumbnails/
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6  
