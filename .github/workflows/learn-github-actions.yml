@@ -20,6 +20,8 @@ jobs:
 
       - run: rm -rf dest/data
       - run: rm -rf dest/thumbnails
+      - run: mkdir -p dest/data
+      - run: mkdir -p dest/thumbnails
       - run: cp data/data.json dest/data/
       - run: cp -r thumbnails dest/thumbnails/
 
