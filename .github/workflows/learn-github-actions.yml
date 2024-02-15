@@ -1,0 +1,33 @@
+name: learn-github-action
+on:
+  push:
+    branches:
+      - main
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Source repository checkout
+        uses: actions/checkout@v4
+
+      - name: Repository checkout
+        uses: actions/checkout@v4
+        with:
+          path: 'dest'
+          ref: 'main'
+          fetch_depth: 0
+          repository: 'superruudje/workflow-test-2'
+
+      - name: Copy files
+        working-directory: 'data'
+      - run: rm dest/data
+      - run: cp data.json dest/data/
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6  
+        with:
+          branch: 'updates/data'
+          title: 'Update thumbnails and content data'
+          body: 'Update thumbnails and content data'
+          commit-message: 'update: '
+          path: 'dest'
