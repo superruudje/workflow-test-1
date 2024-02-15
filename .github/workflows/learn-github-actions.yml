@@ -18,8 +18,6 @@ jobs:
           fetch_depth: 0
           repository: 'superruudje/workflow-test-2'
 
-      - name: Copy files
-        working-directory: ./
       - run: rm dest/data
       - run: cp data/data.json dest/data/
       - run: cp -r thumbnails dest/thumbnails/
